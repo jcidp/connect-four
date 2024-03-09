@@ -17,6 +17,8 @@ class Board
   end
 
   def add_to_lane(marker, lane)
+    return unless valid_lane? lane
+
     board[lane].push(marker)
   end
 
@@ -26,6 +28,10 @@ class Board
 
   def initialize
     reset_board
+  end
+
+  def valid_lane?(lane)
+    lane.between?(0, 6) && board[lane].length < 6
   end
 end
 
