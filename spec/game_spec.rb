@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require "./lib/game"
-require "./lib/board"
+
+# rubocop:disable Metrics/BlockLength
 
 describe Game do
   subject(:setup_game) { described_class.new }
   describe "#play_game" do
     before do
-      # allow(setup_board).to receive(:reset_board)
       allow(setup_game).to receive(:game_over?).and_return(false, false, true)
       allow(setup_game).to receive(:play_turn).and_return(nil, nil)
     end
@@ -85,3 +85,5 @@ describe Game do
     end
   end
 end
+
+# rubocop:enable Metrics/BlockLength
